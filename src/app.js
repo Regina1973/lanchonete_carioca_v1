@@ -1,0 +1,1 @@
+app.use("/upload", require("./routes/upload.routes"));
