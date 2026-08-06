@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // rotas temporárias
-//app.use("/auth", authRoutes);
-//app.use("/users", userRoutes);
+//app.use("/src/auth", authRoutes);
+//app.use("/src/users", userRoutes);
 
 //rota definitiva
 app.use("/api/auth", authRoutes);
