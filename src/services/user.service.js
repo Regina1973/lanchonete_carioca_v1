@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const filePath = path.join(__dirname, "../data/user.json");
 
-const filePath = path.join(__dirname, "../data/users.json");
 
 function getUsers() {
   const data = fs.readFileSync(filePath);
@@ -10,6 +10,11 @@ function getUsers() {
 
 function saveUsers(users) {
   fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+}
+
+function findByEmail(email) {
+  const users = getUsers();
+  return users.find(user => user.email === email);
 }
 
 function createUser(user) {
@@ -21,5 +26,6 @@ function createUser(user) {
 
 module.exports = {
   getUsers,
+  findByEmail,
   createUser
 };
