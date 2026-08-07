@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const userController = require("../controllers/user.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 
-// protegida
-router.get("/", authMiddleware, userController.getUsers);
-
-router.post("/", userController.createUser);
+router.get("/profile", authMiddleware, (req, res) => {
+  res.json({
+    message: "Token válido",
+    user: req.user
+  });
+});
 
 module.exports = router;

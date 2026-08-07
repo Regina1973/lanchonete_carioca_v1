@@ -1,10 +1,25 @@
-module.exports = (req, res, next) => {
-  const token = req.headers.authorization;
+const { verifyToken } = require("../utils/jwt");
 
-  if (!token) {
-    return res.status(401).json({ error: "Token ausente" });
+module.exports = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({
+      error: "Token não informado"
+    });
   }
 
-  // aqui você valida o token depois
-  next();
+  const token = authHeader.replace("Bearer ", "");
+
+  try {
+    const decoded = verifyToken(token);
+
+    req.user = decoded;
+
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      error: "Token inválido"
+    });
+  }
 };
