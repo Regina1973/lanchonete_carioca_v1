@@ -3,9 +3,10 @@ const router = express.Router();
 
 const authMiddleware = require("../middlewares/auth.middleware");
 
-router.get("/profile", authMiddleware, (req, res) => {
+router.use(authMiddleware);
+
+router.get("/profile", (req, res) => {
   res.json({
-    message: "Token válido",
     user: req.user
   });
 });

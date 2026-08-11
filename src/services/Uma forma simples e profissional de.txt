@@ -1,0 +1,1 @@
+Uma forma simples e profissional de organizar sua lanchonete-carioca-v2 é separar cada camada por responsabilidade.
