@@ -1,30 +1,148 @@
-const clientService = require("../services/clients.service");
+const clientController = require("../src/controllers/clients.controller");
+const clientService = require("../src/services/clients.service");
 
-exports.getClients = (req, res) => {
-  const clients = clientService.getClients();
-  res.json(clients);
-};
+jest.mock("../src/services/clients.service");
 
-exports.createClient = (req, res) => {
-  const newClient = clientService.createClient(req.body);
-  res.status(201).json(newClient);
-};
+describe("Clients Controller", () => {
 
-exports.getClientById = (req, res) => {
-  const client = clientService.getClientById(req.params.id);
-  res.json(client);
-};
+  test("deve listar clientes", () => {
+    const req = {};
 
-exports.updateClient = (req, res) => {
-  const client = clientService.updateClient(
-    req.params.id,
-    req.body
-  );
+    const res = {
+      json: jest.fn(),
+    };
 
-  res.json(client);
-};
+    const clients = [
+      {
+        id: "1",
+        name: "Aline",
+      },
+    ];
 
-exports.deleteClient = (req, res) => {
-  clientService.deleteClient(req.params.id);
-  res.status(204).send();
-};
+    clientService.getClients.mockReturnValue(clients);
+
+    clientController.getClients(req, res);
+
+    expect(clientService.getClients).toHaveBeenCalled();
+
+    expect(res.json).toHaveBeenCalledWith(clients);
+  });
+
+  test("deve criar cliente", () => {
+    const req = {
+      body: {
+        name: "Aline",
+        email: "aline@email.com",
+      },
+    };
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    const client = {
+      id: "1",
+      name: "Aline",
+      email: "aline@email.com",
+    };
+
+    clientService.createClient.mockReturnValue(client);
+
+    clientController.createClient(req, res);
+
+    expect(clientService.createClient)
+      .toHaveBeenCalledWith(req.body);
+
+    expect(res.status)
+      .toHaveBeenCalledWith(201);
+
+    expect(res.json)
+      .toHaveBeenCalledWith(client);
+  });
+
+  test("deve buscar cliente por id", () => {
+    const req = {
+      params: {
+        id: "1",
+      },
+    };
+
+    const res = {
+      json: jest.fn(),
+    };
+
+    const client = {
+      id: "1",
+      name: "Aline",
+    };
+
+    clientService.getClientById.mockReturnValue(client);
+
+    clientController.getClientById(req, res);
+
+    expect(clientService.getClientById)
+      .toHaveBeenCalledWith("1");
+
+    expect(res.json)
+      .toHaveBeenCalledWith(client);
+  });
+
+  test("deve atualizar cliente", () => {
+    const req = {
+      params: {
+        id: "1",
+      },
+      body: {
+        name: "Aline Regina",
+      },
+    };
+
+    const res = {
+      json: jest.fn(),
+    };
+
+    const updatedClient = {
+      id: "1",
+      name: "Aline Regina",
+    };
+
+    clientService.updateClient
+      .mockReturnValue(updatedClient);
+
+    clientController.updateClient(req, res);
+
+    expect(clientService.updateClient)
+      .toHaveBeenCalledWith("1", req.body);
+
+    expect(res.json)
+      .toHaveBeenCalledWith(updatedClient);
+  });
+
+  test("deve remover cliente", () => {
+    const req = {
+      params: {
+        id: "1",
+      },
+    };
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    };
+
+    clientService.deleteClient.mockReturnValue(true);
+
+    clientController.deleteClient(req, res);
+
+    expect(clientService.deleteClient)
+      .toHaveBeenCalledWith("1");
+
+    expect(res.status)
+      .toHaveBeenCalledWith(204);
+
+    expect(res.send)
+      .toHaveBeenCalled();
+  });
+
+});
