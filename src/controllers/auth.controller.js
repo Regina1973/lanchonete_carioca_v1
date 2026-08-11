@@ -1,16 +1,20 @@
+const newUser = {
+  id: Date.now(),
+  email,
+  password: hashedPassword,
+  role: "customer"
+};
+
 const bcrypt = require("bcrypt");
 const userService = require("../services/user.service");
 const { generateToken } = require("../utils/jwt");
 
 // LOGIN
-exports.login = (req, res) => {
-  const { email, password } = req.body;
-
-  const user = userService.findByEmail(email);
-
-  if (!user) {
-    return res.status(401).json({ error: "Usuário não encontrado" });
-  }
+const token = generateToken({
+  id: user.id,
+  email: user.email,
+  role: user.role
+});
 
   const passwordMatch = bcrypt.compareSync(password, user.password);
 
@@ -33,7 +37,9 @@ exports.register = (req, res) => {
   const existingUser = userService.findByEmail(email);
 
   if (existingUser) {
-    return res.status(400).json({ error: "Usuário já existe" });
+    return res.status(400).json({
+      error: "Usuário já existe"
+    });
   }
 
   const hashedPassword = bcrypt.hashSync(password, 10);
@@ -41,7 +47,8 @@ exports.register = (req, res) => {
   const newUser = {
     id: Date.now(),
     email,
-    password: hashedPassword
+    password: hashedPassword,
+    role: "customer"
   };
 
   userService.createUser(newUser);

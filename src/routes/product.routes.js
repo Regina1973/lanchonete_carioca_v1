@@ -1,14 +1,26 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 
-const controller = require("../controllers/product.controller");
-const auth = require("../middlewares/auth.middleware");
+const productController = require(
+  "../controllers/product.controller"
+);
 
-// Todas as rotas abaixo exigem token
-router.use(auth);
+// Listar produtos
+router.get(
+  "/",
+  productController.getProducts
+);
 
-router.get("/", controller.getAll);
-router.post("/", controller.create);
-router.put("/:id", controller.update);
-router.delete("/:id", controller.remove);
+// Buscar produto por ID
+router.get(
+  "/:id",
+  productController.getProductById
+);
 
-module.exports = router;
+// Criar produto
+router.post(
+  "/",
+  productController.createProduct
+);
+
+module.exports = router;;
