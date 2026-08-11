@@ -20,8 +20,9 @@ exports.login = (req, res) => {
 
   const token = generateToken({
     id: user.id,
-    email: user.email
-  });
+    email: user.email,
+    role: user.role
+});
 
   return res.json({ token });
 };
@@ -33,7 +34,10 @@ exports.register = (req, res) => {
   const existingUser = userService.findByEmail(email);
 
   if (existingUser) {
-    return res.status(400).json({ error: "Usuário já existe" });
+    return res.status(400).json({
+      success: false,
+      message: "Usuário já existe"
+    });
   }
 
   const hashedPassword = bcrypt.hashSync(password, 10);
@@ -41,10 +45,14 @@ exports.register = (req, res) => {
   const newUser = {
     id: Date.now(),
     email,
-    password: hashedPassword
+    password: hashedPassword,
+    role: "customer"
   };
 
   userService.createUser(newUser);
 
-  return res.status(201).json(newUser);
+  return res.status(201).json({
+    success: true,
+    user: newUser
+  });
 };
