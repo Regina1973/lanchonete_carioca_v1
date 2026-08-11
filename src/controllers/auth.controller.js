@@ -2,54 +2,104 @@ const bcrypt = require("bcrypt");
 const userService = require("../services/user.service");
 const { generateToken } = require("../utils/jwt");
 
-// LOGIN
+//Login
 exports.login = (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = userService.findByEmail(email);
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Email e senha são obrigatórios"
+      });
+    }
 
-  if (!user) {
-    return res.status(401).json({ error: "Usuário não encontrado" });
-  }
+    const user = userService.findByEmail(email);
 
-  const passwordMatch = bcrypt.compareSync(password, user.password);
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "Usuário não encontrado"
+      });
+    }
 
-  if (!passwordMatch) {
-    return res.status(401).json({ error: "Senha inválida" });
-  }
+    const passwordMatch = bcrypt.compareSync(
+      password,
+      user.password
+    );
 
-  const token = generateToken({
-    id: user.id,
-    email: user.email,
-    role: user.role
-});
+    if (!passwordMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Senha inválida"
+      });
+    }
 
-  return res.json({ token });
-};
+    const token = generateToken({
+      id: user.id,
+      email: user.email,
+      role: user.role
+    });
 
-// REGISTER
-exports.register = (req, res) => {
-  const { email, password } = req.body;
+    return res.json({
+      success: true,
+      token
+    });
 
-  const existingUser = userService.findByEmail(email);
-
-  if (existingUser) {
-    return res.status(400).json({
+  } catch (error) {
+    return res.status(500).json({
       success: false,
-      message: "Usuário já existe"
+      message: "Erro interno do servidor"
     });
   }
+};
+// REGISTER
+exports.register = (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Email e senha são obrigatórios"
+      });
+    }
 
-  const newUser = {
-    id: Date.now(),
-    email,
-    password: hashedPassword,
-    role: "customer"
-  };
+    const existingUser =
+      userService.findByEmail(email);
 
-  userService.createUser(newUser);
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Usuário já existe"
+      });
+    }
+
+    const hashedPassword =
+      bcrypt.hashSync(password, 10);
+
+    const newUser = {
+      id: Date.now(),
+      email,
+      password: hashedPassword,
+      role: "customer"
+    };
+
+    userService.createUser(newUser);
+
+    return res.status(201).json({
+      success: true,
+      user: newUser
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Erro interno do servidor"
+    });
+  }
+};
+ userService.createUser(newUser);
 
   return res.status(201).json({
     success: true,
