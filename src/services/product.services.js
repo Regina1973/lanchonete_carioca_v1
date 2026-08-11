@@ -11,7 +11,7 @@ function getProducts() {
 
   return JSON.parse(data);
 }
-
+//Salva produtos
 function saveProducts(products) {
   fs.writeFileSync(
     filePath,
@@ -19,10 +19,12 @@ function saveProducts(products) {
   );
 }
 
+//Listar produtos
 function getAllProducts() {
   return getProducts();
 }
 
+//Buscar produto
 function getProductById(id) {
   const products = getProducts();
 
@@ -31,6 +33,7 @@ function getProductById(id) {
   );
 }
 
+//Criar produto
 function createProduct(product) {
   const products = getProducts();
 
