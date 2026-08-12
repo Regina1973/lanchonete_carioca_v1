@@ -2,16 +2,53 @@ const productService = require(
   "../services/product.service"
 );
 
-// LISTAR PRODUTOS funciona
+// LISTAR PRODUTOS
 exports.getProducts = (req, res) => {
   try {
-    const products =
+    const {
+      categoria,
+      precoMin,
+      precoMax,
+      nome
+    } = req.query;
+
+    let products =
       productService.getAllProducts();
+
+    if (nome) {
+      products = products.filter(product =>
+        product.nome
+          .toLowerCase()
+          .includes(nome.toLowerCase())
+      );
+    }
+
+    if (categoria) {
+      products = products.filter(
+        product =>
+          product.categoria === categoria
+      );
+    }
+
+    if (precoMin) {
+      products = products.filter(
+        product =>
+          product.preco >= Number(precoMin)
+      );
+    }
+
+    if (precoMax) {
+      products = products.filter(
+        product =>
+          product.preco <= Number(precoMax)
+      );
+    }
 
     return res.json({
       success: true,
       data: products
     });
+
   } catch (error) {
     return res.status(500).json({
       success: false,
