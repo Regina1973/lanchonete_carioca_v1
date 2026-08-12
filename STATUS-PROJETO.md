@@ -1,100 +1,100 @@
-# \# STATUS DO PROJETO
+\# STATUS DO PROJETO
 
-# 
 
-# \## V2
 
-# 
+\## V3
 
-# \- \[x] Login
 
-# \- \[x] JWT
 
-# \- \[x] Roles
+\### Produtos
 
-# \- \[x] Middleware
 
-# \- \[x] README
 
-# \- \[x] Tratamento de erros
+\- \[x] GET /products
 
-# 
+\- \[x] GET /products/:id
 
-# \---
+\- \[x] POST /products
 
-# 
+\- \[x] PUT /products/:id
 
-# \## V3
+\- \[x] DELETE /products/:id
 
-# 
 
-# \### Produtos
 
-# 
+\### Categorias
 
-# \- \[x] products.json
 
-# \- \[x] product.service.js
 
-# \- \[x] product.controller.js
+\- \[ ] GET /categories
 
-# \- \[x] product.routes.js
+\- \[ ] GET /categories/:id
 
-# 
+\- \[ ] POST /categories
 
-# \- \[x] GET /products
+\- \[ ] PUT /categories/:id
 
-# \- \[x] GET /products/:id
+\- \[ ] DELETE /categories/:id
 
-# \- \[x] POST /products
 
-# \- \[x] PUT /products/:id
 
-# \- \[x] DELETE /products/:id
+\### Pedidos
 
-# 
 
-# \- \[x] Testes
 
-# 
+\- \[ ] Iniciar
 
-# \### Categorias
 
-# 
 
-# \- \[ ] Iniciar
+\### Estoque
 
-# 
 
-# \### Pedidos
 
-# 
+\- \[ ] Iniciar
 
-# \- \[ ] Iniciar
 
-# 
 
-# \### Estoque
+\---
 
-# 
 
-# \- \[ ] Iniciar
 
-# 
+\## Melhorias da API
 
-# \---
 
-# 
 
-# \## Próxima Tarefa
+\### Padronização de respostas
 
-# 
 
-# \- \[ ] Criar categories.json
 
-# \- \[ ] Criar category.service.js
+\- \[ ] Adicionar message em respostas de sucesso
 
-# \- \[ ] Criar category.controller.js
+\- \[ ] Padronizar erros 400
+
+\- \[ ] Padronizar erros 404
+
+\- \[ ] Padronizar erros 500
+
+
+
+\### Validações
+
+
+
+\- \[ ] Revisar validações de Produtos
+
+\- \[ ] Revisar validações de Categorias
+
+\- \[ ] Revisar validações de Pedidos
+
+
+
+\### Futuras melhorias
+
+
+
+\- \[ ] Paginação
+
+\- \[ ] Metadata
 
 \- \[ ] Criar category.routes.js
 
