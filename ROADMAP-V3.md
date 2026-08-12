@@ -22,13 +22,13 @@ Implementar as funcionalidades de negócio da lanchonete.
 
 
 
-\- \[ ] Criar products.json
+\- \[x] products.json
 
-\- \[ ] Criar product.service.js
+\- \[x] product.service.js
 
-\- \[ ] Criar product.controller.js
+\- \[x] product.controller.js
 
-\- \[ ] Criar product.routes.js
+\- \[x] product.routes.js
 
 
 
@@ -36,15 +36,15 @@ Implementar as funcionalidades de negócio da lanchonete.
 
 
 
-\- \[ ] Criar produto
+\- \[x] Criar produto
 
-\- \[ ] Listar produtos
+\- \[x] Listar produtos
 
-\- \[ ] Buscar produto por id
+\- \[x] Buscar produto por id
 
-\- \[ ] Atualizar produto
+\- \[x] Atualizar produto
 
-\- \[ ] Excluir produto
+\- \[x] Excluir produto
 
 
 
@@ -52,13 +52,13 @@ Implementar as funcionalidades de negócio da lanchonete.
 
 
 
-\- \[ ] Criar produto
+\- \[x] Criar produto
 
-\- \[ ] Listar produtos
+\- \[x] Listar produtos
 
-\- \[ ] Atualizar produto
+\- \[x] Atualizar produto
 
-\- \[ ] Excluir produto
+\- \[x] Excluir produto
 
 
 
@@ -70,207 +70,13 @@ Implementar as funcionalidades de negócio da lanchonete.
 
 
 
-\## CRUD
+\- \[ ] category.service.js
 
+\- \[ ] category.controller.js
 
+\- \[ ] category.routes.js
 
-\- \[ ] Criar categoria
+\- \[ ] categories.json
 
-\- \[ ] Listar categorias
-
-\- \[ ] Atualizar categoria
-
-\- \[ ] Excluir categoria
-
-
-
-\## Relacionamento
-
-
-
-\- \[ ] Associar produto à categoria
-
-
-
-\---
-
-
-
-\# Fase 3 - Pedidos
-
-
-
-\## CRUD
-
-
-
-\- \[ ] Criar pedido
-
-\- \[ ] Listar pedidos
-
-\- \[ ] Buscar pedido
-
-
-
-\## Status
-
-
-
-\- \[ ] Aberto
-
-\- \[ ] Em preparo
-
-\- \[ ] Pronto
-
-\- \[ ] Entregue
-
-\- \[ ] Cancelado
-
-
-
-\---
-
-
-
-\# Fase 4 - Estoque
-
-
-
-\## Controle
-
-
-
-\- \[ ] Entrada de estoque
-
-\- \[ ] Saída de estoque
-
-\- \[ ] Estoque mínimo
-
-
-
-\## Validações
-
-
-
-\- \[ ] Não permitir estoque negativo
-
-\- \[ ] Alerta de estoque baixo
-
-
-
-\---
-
-
-
-\# Fase 5 - Dashboard
-
-
-
-\## Indicadores
-
-
-
-\- \[ ] Pedidos do dia
-
-\- \[ ] Produtos mais vendidos
-
-\- \[ ] Faturamento
-
-
-
-\---
-
-
-
-\# Fase 6 - Relatórios
-
-
-
-\## Operacional
-
-
-
-\- \[ ] Relatório de pedidos
-
-
-
-\## Financeiro
-
-
-
-\- \[ ] Relatório de vendas
-
-
-
-\---
-
-
-
-\# Permissões
-
-
-
-\## Admin
-
-
-
-\- \[ ] Gerenciar produtos
-
-\- \[ ] Gerenciar categorias
-
-\- \[ ] Gerenciar estoque
-
-\- \[ ] Gerenciar usuários
-
-
-
-\## Employee
-
-
-
-\- \[ ] Consultar produtos
-
-\- \[ ] Gerenciar pedidos
-
-
-
-\## Customer
-
-
-
-\- \[ ] Consultar cardápio
-
-\- \[ ] Criar pedido
-
-
-
-\---
-
-
-
-\# Status Atual
-
-
-
-\## Concluído
-
-
-
-\- \[x] V2 finalizada
-
-\- \[x] Login
-
-\- \[x] JWT
-
-\- \[x] Roles
-
-\- \[x] Middleware de autorização
-
-
-
-\## Próximo Passo
-
-
-
-\- \[ ] Iniciar módulo de Produtos
+\- \[ ] CRUD Categorias
 
