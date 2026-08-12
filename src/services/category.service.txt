@@ -1,0 +1,48 @@
+const fs = require("fs");
+const path = require("path");
+
+const filePath = path.join(
+  __dirname,
+  "../data/categories.json"
+);
+
+function getCategories() {
+  const data = fs.readFileSync(filePath);
+
+  return JSON.parse(data);
+}
+
+function saveCategories(categories) {
+  fs.writeFileSync(
+    filePath,
+    JSON.stringify(categories, null, 2)
+  );
+}
+
+function getAllCategories() {
+  return getCategories();
+}
+
+function getCategoryById(id) {
+  const categories = getCategories();
+
+  return categories.find(
+    category => category.id == id
+  );
+}
+
+function createCategory(category) {
+  const categories = getCategories();
+
+  categories.push(category);
+
+  saveCategories(categories);
+
+  return category;
+}
+
+module.exports = {
+  getAllCategories,
+  getCategoryById,
+  createCategory
+};
