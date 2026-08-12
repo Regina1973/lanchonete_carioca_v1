@@ -131,3 +131,33 @@ exports.updateProduct = (req, res) => {
     });
   }
 };
+
+//EXCLUIR PRODUTO
+// EXCLUIR PRODUTO
+exports.deleteProduct = (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedProduct =
+      productService.deleteProduct(id);
+
+    if (!deletedProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Produto não encontrado"
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: "Produto removido com sucesso",
+      data: deletedProduct
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao remover produto"
+    });
+  }
+};

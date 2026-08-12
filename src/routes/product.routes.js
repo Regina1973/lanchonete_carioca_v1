@@ -23,9 +23,15 @@ router.post(
   productController.createProduct
 );
 
-//Atualizar produto
+//ATUALIZAR PRODUTO
 router.put(
   "/:id",
   productController.updateProduct
 );
-module.exports = router;;
+
+//EXCLUIR PRODUTO
+router.delete(
+  "/:id",
+  productController.deleteProduct
+);
+module.exports = router;

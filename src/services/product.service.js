@@ -65,9 +65,31 @@ function updateProduct(id, updatedData) {
   return products[index];
 }
 
+//EXCLUIR PRODUTOS
+function deleteProduct(id) {
+  const products = getProducts();
+
+  const index = products.findIndex(
+    product => product.id == id
+  );
+
+  if (index === -1) {
+    return null;
+  }
+
+  const deletedProduct = products[index];
+
+  products.splice(index, 1);
+
+  saveProducts(products);
+
+  return deletedProduct;
+}
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
-  updateProduct
+  updateProduct,
+  deleteProduct
 };
