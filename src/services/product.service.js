@@ -43,9 +43,31 @@ function createProduct(product) {
 
   return product;
 }
+//Atualizar Produto
+function updateProduct(id, updatedData) {
+  const products = getProducts();
+
+  const index = products.findIndex(
+    product => product.id == id
+  );
+
+  if (index === -1) {
+    return null;
+  }
+
+  products[index] = {
+    ...products[index],
+    ...updatedData
+  };
+
+  saveProducts(products);
+
+  return products[index];
+}
 
 module.exports = {
   getAllProducts,
   getProductById,
-  createProduct
+  createProduct,
+  updateProduct
 };

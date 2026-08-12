@@ -52,12 +52,12 @@ exports.createProduct = (req, res) => {
   try {
     const { nome, preco } = req.body;
 
-    if (!nome || !preco) {
-      return res.status(400).json({
-        success: false,
-        message: "Nome e preço são obrigatórios"
-      });
-    }
+    if (!nome || preco === undefined) {
+  return res.status(400).json({
+    success: false,
+    message: "Nome e preço são obrigatórios"
+  });
+}
 
     const product = {
       id: Date.now(),
@@ -75,6 +75,59 @@ exports.createProduct = (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Erro ao criar produto"
+    });
+  }
+};
+
+//Atualizar Produtos
+exports.updateProduct = (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nome, preco } = req.body;
+
+    if (!nome || preco === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: "Nome e preço são obrigatórios"
+      });
+    }
+
+    if (typeof preco !== "number") {
+      return res.status(400).json({
+        success: false,
+        message: "Preço deve ser um número"
+      });
+    }
+
+    if (preco <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Preço deve ser maior que zero"
+      });
+    }
+
+ const updatedProduct =
+      productService.updateProduct(id, {
+        nome,
+        preco
+      });
+
+    if (!updatedProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Produto não encontrado"
+      });
+    }
+
+    return res.json({
+      success: true,
+      data: updatedProduct
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao atualizar produto"
     });
   }
 };
