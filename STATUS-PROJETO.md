@@ -62,33 +62,35 @@
 
 
 
-\### Padronização de respostas
-
-
-
-\- \[ ] Adicionar message em respostas de sucesso
-
-\- \[ ] Padronizar erros 400
-
-\- \[ ] Padronizar erros 404
-
-\- \[ ] Padronizar erros 500
-
-
-
 \### Validações
 
 
 
-\- \[ ] Revisar validações de Produtos
+\- \[ ] Validar IDs
 
-\- \[ ] Revisar validações de Categorias
+\- \[ ] Validar campos obrigatórios
 
-\- \[ ] Revisar validações de Pedidos
+\- \[ ] Validar tipos numéricos
+
+\- \[ ] Validar textos vazios
+
+\- \[ ] Padronizar mensagens de erro
 
 
 
-\### Futuras melhorias
+\### Filtros
+
+
+
+\- \[ ] Filtro por nome
+
+\- \[ ] Filtro por categoria
+
+\- \[ ] Filtro por faixa de preço
+
+
+
+\### Futuro
 
 
 
@@ -96,5 +98,19 @@
 
 \- \[ ] Metadata
 
-\- \[ ] Criar category.routes.js
+
+
+\---
+
+
+
+\## Próxima Tarefa
+
+
+
+\- \[ ] Testar Categorias
+
+\- \[ ] Implementar PUT /categories/:id
+
+\- \[ ] Implementar DELETE /categories/:id
 
