@@ -1,10 +1,14 @@
 # STATUS PROJETO V3
 
+# STATUS PROJETO V3
+
 ## Produtos
+
+Status: 🚧 Em Validação
 
 ### Estrutura
 
-- [x] products.json
+- [x] data.json (armazena produtos)
 - [x] product.service.js
 - [x] product.controller.js
 - [x] product.routes.js
@@ -46,9 +50,18 @@
 - [ ] PUT /products/:id
 - [ ] DELETE /products/:id
 
+### Pendências
+
+- [ ] Validar persistência createProduct()
+- [ ] Validar persistência updateProduct()
+- [ ] Validar persistência deleteProduct()
+- [ ] Aumentar cobertura dos testes
+
 ---
 
 ## Categorias
+
+Status: ✅ CRUD Implementado
 
 ### Estrutura
 
@@ -67,10 +80,18 @@
 - [x] updateCategory()
 - [x] deleteCategory()
 
+### CRUD
+
+- [x] GET /categories
+- [x] GET /categories/:id
+- [x] POST /categories
+- [x] PUT /categories/:id
+- [x] DELETE /categories/:id
+
 ### Auditoria
 
-- [ ] Auditar category.controller.js
-- [ ] Auditar category.routes.js
+- [x] Auditar category.controller.js
+- [x] Auditar category.routes.js
 - [x] Revisar category.test.js
 - [ ] Validar persistência createCategory()
 - [ ] Validar persistência updateCategory()
@@ -84,17 +105,54 @@
 - [x] Arquivo auditado
 - [ ] Implementar testes
 
+### Pendências
+
+- [ ] Validar persistência createCategory()
+- [ ] Validar persistência updateCategory()
+- [ ] Validar persistência deleteCategory()
+- [ ] Implementar testes automatizados
+
 ---
 
 ## Pedidos
 
-- [ ] Iniciar
+Status: ⬜ Não Iniciado
+
+### Estrutura
+
+- [ ] orders.json
+- [ ] order.service.js
+- [ ] order.controller.js
+- [ ] order.routes.js
+
+### CRUD
+
+- [ ] GET /orders
+- [ ] GET /orders/:id
+- [ ] POST /orders
+- [ ] PUT /orders/:id
+- [ ] DELETE /orders/:id
 
 ---
 
 ## Estoque
 
-- [ ] Iniciar
+Status: ⬜ Não Iniciado
+
+### Estrutura
+
+- [ ] stock.json
+- [ ] stock.service.js
+- [ ] stock.controller.js
+- [ ] stock.routes.js
+
+### CRUD
+
+- [ ] GET /stock
+- [ ] GET /stock/:id
+- [ ] POST /stock
+- [ ] PUT /stock/:id
+- [ ] DELETE /stock/:id
 
 ---
 
@@ -112,7 +170,8 @@
 
 ### Padronização
 
-- [ ] Adicionar message
+- [ ] Adicionar campo message
+- [ ] Padronizar respostas de sucesso
 - [ ] Padronizar erro 400
 - [ ] Padronizar erro 404
 - [ ] Padronizar erro 500
@@ -127,22 +186,52 @@
 
 ## Arquivos Legados Identificados
 
+### Confirmados
+
 - [x] src/controllers/products.controller.js
 - [x] src/routes/products.ts
 - [x] src/categories/category.service.js
-- [ ] Revisar src/services/api.js
-- [ ] Revisar src/services/storage.js
-- [ ] Revisar src/routes/auth.ts
-- [ ] Revisar src/middlewares/auth.ts
+
+### Revisados
+
+- [x] src/services/api.js
+- [x] src/services/storage.js
+
+### Pendentes de Auditoria
+
+- [ ] src/routes/auth.ts
+- [ ] src/middlewares/auth.ts
+
+---
+
+## Frontend
+
+Status: ⏳ Planejamento
+
+### Pré-requisitos
+
+- [x] Produtos auditado
+- [x] Categorias auditada
+- [ ] Pedidos implementado
+- [ ] Estoque implementado
+
+### Planejamento
+
+- [ ] Criar branch frontend-v3
+- [ ] Definir React + Vite
+- [ ] Criar tela Login
+- [ ] Criar Dashboard
+- [ ] Criar tela Produtos
+- [ ] Criar tela Categorias
+- [ ] Criar tela Pedidos
+- [ ] Criar tela Estoque
 
 ---
 
 ## Próximas Tarefas
 
-1. Auditar category.controller.js
-2. Auditar category.routes.js
-3. Validar CRUD de Categorias
-4. Validar persistência das Categorias
-5. Revisar arquivos legados
-6. Atualizar Visão Macro
-7. Iniciar planejamento do Frontend
+1. Validar persistência de Produtos
+2. Validar persistência de Categorias
+3. Revisar src/routes/auth.ts
+4. Revisar src/middlewares/auth.ts
+5. Remover arquivos
