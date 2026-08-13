@@ -56,6 +56,7 @@ exports.createCategory = (req, res) => {
     data: category
   });
 };
+
 //ATUALIZAR CATEGORIA
 exports.updateCategory = (req, res) => {
   try {
@@ -90,6 +91,34 @@ exports.updateCategory = (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Erro ao atualizar categoria"
+    });
+  }
+};
+
+// EXCLUIR CATEGORIA
+exports.deleteCategory = (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedCategory =
+      categoryService.deleteCategory(id);
+
+    if (!deletedCategory) {
+      return res.status(404).json({
+        success: false,
+        message: "Categoria não encontrada"
+      });
+    }
+
+    return res.json({
+      success: true,
+      data: deletedCategory
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao excluir categoria"
     });
   }
 };
