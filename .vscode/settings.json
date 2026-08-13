@@ -1,0 +1,6 @@
+{
+    "editor.allowVariableFontsInAccessibilityMode": true,
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.codeActions.triggerOnFocusChange": true
+}
