@@ -81,33 +81,7 @@ function deleteCategory(id) {
   saveCategories(categories);
 
   return deletedCategory;
- });
 }
-exports.deleteCategory = (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const deletedCategory =
-      categoryService.deleteCategory(id);
-
-    if (!deletedCategory) {
-      return res.status(404).json({
-        success: false,
-        message: "Categoria não encontrada"
-      });
-    }
-
-    return res.json({
-      success: true,
-      data: deletedCategory
-    });
-
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Erro ao excluir categoria"
-    });
-  }
 
 module.exports = {
   getAllCategories,
