@@ -1,24 +1,6 @@
 {
     "editor.fontFamily": "Consolas",
     "editor.fontSize": 18,
-
     "editor.formatOnSave": true,
-
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-
-    "terminal.integrated.fontFamily": "Consolas",
-    "terminal.integrated.fontSize": 16,
-
-    "files.autoSave": "onWindowChange",
-
-    "editor.autoClosingBrackets": "beforeWhitespace",
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
