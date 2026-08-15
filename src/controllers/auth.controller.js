@@ -1,30 +1,34 @@
-const newUser = {
-  id: Date.now(),
-  email,
-  password: hashedPassword,
-  role: "customer"
-};
-
 const bcrypt = require("bcrypt");
 const userService = require("../services/user.service");
 const { generateToken } = require("../utils/jwt");
 
 // LOGIN
-const token = generateToken({
-  id: user.id,
-  email: user.email,
-  role: user.role
-});
+exports.login = (req, res) => {
+  const { email, password } = req.body;
 
-  const passwordMatch = bcrypt.compareSync(password, user.password);
+  const user = userService.findByEmail(email);
+
+  if (!user) {
+    return res.status(401).json({
+      error: "Usuário não encontrado"
+    });
+  }
+
+  const passwordMatch = bcrypt.compareSync(
+    password,
+    user.password
+  );
 
   if (!passwordMatch) {
-    return res.status(401).json({ error: "Senha inválida" });
+    return res.status(401).json({
+      error: "Senha inválida"
+    });
   }
 
   const token = generateToken({
     id: user.id,
-    email: user.email
+    email: user.email,
+    role: user.role
   });
 
   return res.json({ token });

@@ -1,5 +1,15 @@
 {
     "editor.fontFamily": "Consolas",
     "editor.fontSize": 18,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "boost-test-adapter-robaho.tests": [
+        {
+            "testExecutables": [
+                {
+                    "glob": "**/*{_test,_test.exe}"
+                }
+            ],
+            "debugConfig": "Test Config"
+        }
+    ]
 }
