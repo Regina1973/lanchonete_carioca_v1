@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Sem testes configurados\""
-  },
+    "test": "jest"
+},
   "keywords": [
     "api",
     "lanchonete",
